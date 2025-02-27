@@ -3,10 +3,10 @@ export function includesIgnoreCase(mainStr, subStr) {
   return regex.test(mainStr);
 }
 
-export function highlightKeyword(text, keyword) {
+export function highlightKeyword(text, keyword,isDark) {
   if(!keyword) return text
   return text.replace(
     new RegExp(keyword, "gi"),
-    '<span style="background-color: yellow;">$&</span>'
+    `<span style="color: ${isDark?'yellow':'red'};font-weight: bold;">$&</span>`
   );
 }

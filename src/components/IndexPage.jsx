@@ -33,18 +33,6 @@ const IndexPage = ({ arr }) => {
 
   return (
     <div className={`index-container ${isDark ? "dark" : "light"}`}>
-      <div className="header-actions">
-        <ArrowLeftOutlined
-          className="back-button"
-          onClick={() => navigate("/")}
-        />
-        <Switch
-          checkedChildren="🌙"
-          unCheckedChildren="☀️"
-          defaultChecked
-          onChange={(checked) => setIsDark(checked)}
-        />
-      </div>
       <div className="sidebar">
         <div className="sidebar-header">目录</div>
         <List
@@ -59,13 +47,27 @@ const IndexPage = ({ arr }) => {
       </div>
 
       <div className="main-content">
-        <div className="search-section">
-          <Input
-            prefix={<SearchOutlined />}
-            onChange={debounce((e) => setValue(e.target.value), 300)}
-            placeholder="搜索题目或内容..."
-            allowClear
-          />
+        <div className="search-header">
+          <div className="search-section">
+            <Input
+              prefix={<SearchOutlined />}
+              onChange={debounce((e) => setValue(e.target.value), 300)}
+              placeholder="搜索题目或内容..."
+              allowClear
+            />
+          </div>
+          <div className="header-actions">
+            <ArrowLeftOutlined
+              className="back-button"
+              onClick={() => navigate("/")}
+            />
+            <Switch
+              checkedChildren="🌙"
+              unCheckedChildren="☀️"
+              defaultChecked
+              onChange={(checked) => setIsDark(checked)}
+            />
+          </div>
         </div>
 
         <List
@@ -84,7 +86,7 @@ const IndexPage = ({ arr }) => {
                   <h3
                     className="content-title"
                     dangerouslySetInnerHTML={{
-                      __html: highlightKeyword(item.title, value),
+                      __html: highlightKeyword(item.title, value,isDark),
                     }}
                   />
                 }
@@ -92,7 +94,7 @@ const IndexPage = ({ arr }) => {
                   <div
                     className="content-description"
                     dangerouslySetInnerHTML={{
-                      __html: highlightKeyword(item.content, value),
+                      __html: highlightKeyword(item.content, value,isDark),
                     }}
                   />
                 }

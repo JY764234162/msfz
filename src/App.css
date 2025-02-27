@@ -20,7 +20,6 @@ h3 {
 }
 
 .app-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,7 +57,7 @@ h3 {
 
 .app-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   margin-top: 40px;
   position: relative;
 }
@@ -81,8 +80,9 @@ h3 {
 }
 
 .button-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 30px;
   width: 100%;
   max-width: 1200px;
@@ -192,8 +192,7 @@ h3 {
   }
 
   .app-header {
-    margin-bottom: 30px;
-    margin-top: 40px;
+    margin: 0;
   }
 
   .app-header h1 {
@@ -223,8 +222,7 @@ h3 {
   }
 
   .app-header {
-    margin-bottom: 20px;
-    margin-top: 30px;
+    margin: 0;
   }
 
   .app-header h1 {
@@ -245,6 +243,9 @@ h3 {
 
 /* 适配超小屏幕 */
 @media (max-width: 320px) {
+  .app-header {
+    margin: 0;
+  }
   .app-header h1 {
     font-size: 24px;
   }

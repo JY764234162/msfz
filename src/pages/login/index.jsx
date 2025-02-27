@@ -31,6 +31,8 @@ const Login = () => {
           sessionStorage.removeItem("token");
           navigate("/login");
         }, 2 * 60 * 60 * 1000);
+      }else{
+        message.error("密码错误，请联系阿鱼添加账号");
       }
     }, randomTime);
   };
