@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 获取当前路径 1.2.3.a.
+# 获取当前路径
 current_path=$(pwd)
 
 # 拼接dist文件夹的路径
