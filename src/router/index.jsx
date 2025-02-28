@@ -3,14 +3,15 @@ import {
   createBrowserRouter,
   redirect,
 } from "react-router-dom";
-import App from "../App";
-import Login from "../pages/login";
+import Home from "@/pages/home";
+import Login from "@/pages/login";
+import { Navigate } from "react-router";
 
-import Frontend from "../pages/frontend";
-import Backend from "../pages/backend";
-import DataAnalysis from "../pages/dataAnalysis";
-import Linux from "../pages/linux";
-import CloudComputing from "../pages/cloudComputing";
+import Frontend from "@/pages/frontend";
+import Backend from "@/pages/backend";
+import DataAnalysis from "@/pages/dataAnalysis";
+import Linux from "@/pages/linux";
+import CloudComputing from "@/pages/cloudComputing";
 
 const loader = async () => {
   const token = sessionStorage.getItem("token");
@@ -28,7 +29,7 @@ export const Router = () => {
   const router = [
     {
       path: "/",
-      Component: App,
+      Component: Home,
       loader,
     },
     {
@@ -60,6 +61,10 @@ export const Router = () => {
       path: "/linux",
       Component: Linux,
       loader,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/" replace />,
     },
   ];
   const browserRouter = createBrowserRouter(router);
