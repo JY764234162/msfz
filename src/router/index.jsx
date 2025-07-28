@@ -24,7 +24,7 @@ const loginLoader = async () => {
 export const Router = () => {
   const router = [
     {
-      path: "/home",
+      path: "/",
       Component: Home,
       loader,
     },
@@ -60,10 +60,10 @@ export const Router = () => {
     },
     {
       path: "*",
-      element: <Navigate to="/home" replace />,
+      element: <Navigate to="/" replace />,
     },
   ];
-  const browserRouter = createHashRouter(router, { basename: "/msfz" });
+  const browserRouter = createHashRouter(router);
 
   return <RouterProvider router={browserRouter} />;
 };
