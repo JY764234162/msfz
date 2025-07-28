@@ -67,7 +67,7 @@ export const Router = () => {
       element: <Navigate to="/" replace />,
     },
   ];
-  const browserRouter = createBrowserRouter(router, { basename: "msfz" });
+  const browserRouter = createBrowserRouter(router, { basename: "/msfz" });
 
   return <RouterProvider router={browserRouter} />;
 };
