@@ -1,8 +1,4 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-  redirect,
-} from "react-router-dom";
+import { RouterProvider, createHashRouter, redirect } from "react-router-dom";
 import Home from "@/pages/home";
 import Login from "@/pages/login";
 import { Navigate } from "react-router";
@@ -28,7 +24,7 @@ const loginLoader = async () => {
 export const Router = () => {
   const router = [
     {
-      path: "/",
+      path: "/home",
       Component: Home,
       loader,
     },
@@ -64,10 +60,10 @@ export const Router = () => {
     },
     {
       path: "*",
-      element: <Navigate to="/" replace />,
+      element: <Navigate to="/home" replace />,
     },
   ];
-  const browserRouter = createBrowserRouter(router, { basename: "/msfz" });
+  const browserRouter = createHashRouter(router, { basename: "/msfz" });
 
   return <RouterProvider router={browserRouter} />;
 };

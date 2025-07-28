@@ -8,6 +8,15 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()],
   build: {
     outDir: "docs",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+          antd: ["antd"],
+          lodash: ["lodash"],
+        },
+      },
+    },
   },
   resolve: {
     alias: {
