@@ -1,69 +1,73 @@
-import { RouterProvider, createHashRouter, redirect } from "react-router-dom";
-import Home from "@/pages/home";
-import Login from "@/pages/login";
-import { Navigate } from "react-router";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from 'react-router-dom';
+import Home from '@/pages/home';
+import Login from '@/pages/login';
+import { Navigate } from 'react-router';
 
-import Frontend from "@/pages/frontend";
-import Backend from "@/pages/backend";
-import DataAnalysis from "@/pages/dataAnalysis";
-import Linux from "@/pages/linux";
-import CloudComputing from "@/pages/cloudComputing";
+import Frontend from '@/pages/frontend';
+import Backend from '@/pages/backend';
+import DataAnalysis from '@/pages/dataAnalysis';
+import Linux from '@/pages/linux';
+import CloudComputing from '@/pages/cloudComputing';
 
 const loader = async () => {
-  const token = sessionStorage.getItem("token");
+  const token = sessionStorage.getItem('token');
   if (token === window.uuid) return null;
-  else return redirect("/login");
+  else return redirect('/login');
 };
 
 const loginLoader = async () => {
-  const token = sessionStorage.getItem("token");
-  if (token === window.uuid) return redirect("/");
+  const token = sessionStorage.getItem('token');
+  if (token === window.uuid) return redirect('/');
   else return null;
 };
 
 export const Router = () => {
   const router = [
     {
-      path: "/",
+      path: '/',
       Component: Home,
       loader,
     },
     {
-      path: "/login",
+      path: '/login',
       Component: Login,
       loader: loginLoader,
     },
     {
-      path: "/frontend",
+      path: '/frontend',
       Component: Frontend,
       loader,
     },
     {
-      path: "/backend",
+      path: '/backend',
       Component: Backend,
       loader,
     },
     {
-      path: "/dataAnalysis",
+      path: '/dataAnalysis',
       Component: DataAnalysis,
       loader,
     },
     {
-      path: "/cloudComputing",
+      path: '/cloudComputing',
       Component: CloudComputing,
       loader,
     },
     {
-      path: "/linux",
+      path: '/linux',
       Component: Linux,
       loader,
     },
     {
-      path: "*",
+      path: '*',
       element: <Navigate to="/" replace />,
     },
   ];
-  const browserRouter = createHashRouter(router);
+  const browserRouter = createBrowserRouter(router);
 
   return <RouterProvider router={browserRouter} />;
 };
