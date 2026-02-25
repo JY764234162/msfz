@@ -27,10 +27,11 @@ RUN rm -rf ./*
 
 # 从构建阶段拷贝打包产物
 # 默认假设 Vite 的 outDir 配置为 docs
-COPY --from=build /app/docs ./
+COPY --from=build /app/dist ./msfz/
 
 # 自定义 Nginx 配置以支持 SPA（前端路由）
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
 
 EXPOSE 80
 
